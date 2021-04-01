@@ -1,23 +1,22 @@
 {
   "name": "sunnysideup/avoid-child-deletion",
   "type": "silverstripe-vendormodule",
-  "description": "Helps CMS Users navigate through tabs in Elemental CMS Interface by providing clickable links to switch tabs.",
+  "description": "Avoid deleting pages that have children or are the home page of your website.",
   "keywords": [
     "Silverstripe-CMS",
     "CMS",
     "Silverstripe",
     "link",
-    "elemental",
-    "switch tabs",
-    "tabs",
-    "cms fields",
-    "cms",
-    "fields",
-    "field"
+    "delete",
+    "archive",
+    "home page",
+    "homepage",
+    "careful",
+    "cascade deletes",
+    "parents and children"
   ],
   "require": {
-    "silverstripe/framework": "^4.0",
-    "dnadesign/silverstripe-elemental": "^4.0"
+    "silverstripe/framework": "^4.0"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
