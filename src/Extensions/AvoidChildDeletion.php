@@ -8,8 +8,6 @@ use SilverStripe\CMS\Model\SiteTreeExtension;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\LiteralField;
 
-use SilverStripe\Security\Member;
-
 class AvoidChildDeletionExtension extends SiteTreeExtension
 {
     public function updateCMSActions(FieldList $fields)
@@ -23,7 +21,7 @@ class AvoidChildDeletionExtension extends SiteTreeExtension
                         'ArchiveNote',
                         '
                         <div class=\'cms-sitetree-information\'>
-                        	<p class="meta-info" style="white-space: normal;">'.$phrase.'</p>
+                        	<p class="meta-info" style="white-space: normal;">' . $phrase . '</p>
                         </div>'
                     ),
                 ]
