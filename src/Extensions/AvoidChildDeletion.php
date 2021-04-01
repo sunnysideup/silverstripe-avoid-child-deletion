@@ -15,6 +15,7 @@ class AvoidChildDeletionExtension extends SiteTreeExtension
     public function updateCMSActions(FieldList $fields)
     {
         if ($this->hasChildrenOrIsTooImportant()) {
+            $phrase = _t(__CLASS__ . '.ReasonsThisPageCanNotBeDeleted', 'This page can not be archived because it has children or it is the home page.');
             $fields->addFieldsToTab(
                 'ActionMenus.MoreOptions',
                 [
@@ -22,11 +23,7 @@ class AvoidChildDeletionExtension extends SiteTreeExtension
                         'ArchiveNote',
                         '
                         <div class=\'cms-sitetree-information\'>
-                        	<p class="meta-info" style="white-space: normal;">
-                                This page can not be deleted because it has children or it is the home page.
-                                To delete this page, you need to either move / delete its child pages or
-                                carefully consider if you really want to delete your home page.
-                        	</p>
+                        	<p class="meta-info" style="white-space: normal;">'.$phrase.'</p>
                         </div>'
                     ),
                 ]
@@ -34,12 +31,12 @@ class AvoidChildDeletionExtension extends SiteTreeExtension
         }
     }
 
-    public function canDelete(Member $member = null)
+    public function canDelete($member = null)
     {
         return $this->canArchive($member);
     }
 
-    public function canArchive(Member $member = null)
+    public function canArchive($member = null)
     {
         if ($this->hasChildrenOrIsTooImportant()) {
             return false;
