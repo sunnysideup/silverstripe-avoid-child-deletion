@@ -8,6 +8,8 @@ use SilverStripe\CMS\Model\SiteTreeExtension;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\LiteralField;
 
+use SilverStripe\Security\Member;
+
 class AvoidChildDeletionExtension extends SiteTreeExtension
 {
     public function updateCMSActions(FieldList $fields)
@@ -32,12 +34,12 @@ class AvoidChildDeletionExtension extends SiteTreeExtension
         }
     }
 
-    public function canDelete($member = null)
+    public function canDelete(Member $member = null)
     {
         return $this->canArchive($member);
     }
 
-    public function canArchive($member = null)
+    public function canArchive(Member $member = null)
     {
         if ($this->hasChildrenOrIsTooImportant()) {
             return false;
