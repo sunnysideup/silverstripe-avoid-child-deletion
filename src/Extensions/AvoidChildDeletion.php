@@ -4,24 +4,28 @@ namespace Sunnysideup\AvoidChildDeletion\Extensions;
 
 use SilverStripe\CMS\Controllers\RootURLController;
 use SilverStripe\CMS\Model\SiteTree;
-
 use SilverStripe\CMS\Model\SiteTreeExtension;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\LiteralField;
 
 class AvoidChildDeletionExtension extends SiteTreeExtension
 {
-    public function updateCMSFields(FieldList $fields)
+    public function updateCMSActions(FieldList $fields)
     {
         if ($this->hasChildrenOrIsTooImportant()) {
             $fields->addFieldsToTab(
-                'Root.Archive',
+                'ActionMenus.MoreOptions',
                 [
                     LiteralField::create(
                         'ArchiveNote',
-                        '<p>
-                            This page can not be deleted because it has children or it is the home page.
-                            To delete this page, you need to either move / delete its child pages or
-                            carefully consider if you really want to delete your home page.
-                        </p>'
+                        '
+                        <div class=\'cms-sitetree-information\'>
+                        	<p class="meta-info" style="white-space: normal;">
+                                This page can not be deleted because it has children or it is the home page.
+                                To delete this page, you need to either move / delete its child pages or
+                                carefully consider if you really want to delete your home page.
+                        	</p>
+                        </div>'
                     ),
                 ]
             );
@@ -29,6 +33,11 @@ class AvoidChildDeletionExtension extends SiteTreeExtension
     }
 
     public function canDelete($member = null)
+    {
+        return $this->canArchive($member);
+    }
+
+    public function canArchive($member = null)
     {
         if ($this->hasChildrenOrIsTooImportant()) {
             return false;
