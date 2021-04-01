@@ -1,0 +1,7 @@
+---
+Name: avoid-child-deletion
+---
+
+SiteTree:
+  extensions:
+    - unnysideup\AvoidChildDeletion\Extensions\AvoidChildDeletionExtension
