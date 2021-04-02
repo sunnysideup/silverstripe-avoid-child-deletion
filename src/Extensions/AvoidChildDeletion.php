@@ -39,7 +39,7 @@ class AvoidChildDeletionExtension extends SiteTreeExtension
         if ($this->hasChildrenOrIsTooImportant()) {
             return false;
         }
-        // no return to let normal return take its course ...
+        return true;
     }
 
     protected function hasChildrenOrIsTooImportant(): bool
