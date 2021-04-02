@@ -36,10 +36,7 @@ class AvoidChildDeletionExtension extends SiteTreeExtension
 
     public function canArchive($member = null)
     {
-        if ($this->hasChildrenOrIsTooImportant()) {
-            return false;
-        }
-        return true;
+        return ! $this->hasChildrenOrIsTooImportant();
     }
 
     protected function hasChildrenOrIsTooImportant(): bool
