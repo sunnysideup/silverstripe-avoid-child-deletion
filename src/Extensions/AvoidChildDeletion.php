@@ -8,7 +8,7 @@ use SilverStripe\CMS\Model\SiteTreeExtension;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\LiteralField;
 
-class AvoidChildDeletionExtension extends SiteTreeExtension
+class AvoidChildDeletion extends SiteTreeExtension
 {
     public function updateCMSActions(FieldList $fields)
     {
@@ -43,6 +43,7 @@ class AvoidChildDeletionExtension extends SiteTreeExtension
     {
         $isHomePage = $this->owner->URLSegment === RootURLController::get_homepage_link();
         $haschildren = SiteTree::get()->filter('ParentID', $this->owner->ID)->count() > 0;
+
         return $isHomePage || $haschildren;
     }
 }
