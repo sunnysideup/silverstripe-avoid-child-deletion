@@ -7,6 +7,7 @@ use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\CMS\Model\SiteTreeExtension;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\LiteralField;
+use SilverStripe\Security\Member;
 
 class AvoidChildDeletion extends SiteTreeExtension
 {
@@ -29,11 +30,19 @@ class AvoidChildDeletion extends SiteTreeExtension
         }
     }
 
+    /**
+     *
+     * @param  Member $member - optional
+     */
     public function canDelete($member = null)
     {
         return $this->canArchive($member);
     }
 
+    /**
+     *
+     * @param  Member $member - optional
+     */
     public function canArchive($member = null)
     {
         return ! $this->hasChildrenOrIsTooImportant();
