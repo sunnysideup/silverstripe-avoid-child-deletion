@@ -4,4 +4,4 @@ Name: avoid-child-deletion
 
 SilverStripe\CMS\Model\SiteTree:
   extensions:
-    - Sunnysideup\AvoidChildDeletion\Extensions\AvoidChildDeletionExtension
+    - Sunnysideup\AvoidChildDeletion\Extensions\AvoidChildDeletion
