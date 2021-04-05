@@ -31,8 +31,7 @@ class AvoidChildDeletion extends SiteTreeExtension
     }
 
     /**
-     *
-     * @param  Member $member - optional
+     * @param Member $member - optional
      */
     public function canDelete($member = null)
     {
@@ -40,8 +39,7 @@ class AvoidChildDeletion extends SiteTreeExtension
     }
 
     /**
-     *
-     * @param  Member $member - optional
+     * @param Member $member - optional
      */
     public function canArchive($member = null)
     {
