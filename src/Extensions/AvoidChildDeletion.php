@@ -49,7 +49,7 @@ class AvoidChildDeletion extends SiteTreeExtension
     protected function hasChildrenOrIsTooImportant(): bool
     {
         $isHomePage = $this->owner->URLSegment === RootURLController::get_homepage_link();
-        $haschildren = SiteTree::get()->filter('ParentID', $this->owner->ID)->count() > 0;
+        $haschildren = SiteTree::get()->filter('ParentID', $this->owner->ID)->exists();
 
         return $isHomePage || $haschildren;
     }
