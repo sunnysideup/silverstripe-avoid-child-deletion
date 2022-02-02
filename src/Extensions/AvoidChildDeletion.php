@@ -22,7 +22,7 @@ class AvoidChildDeletion extends SiteTreeExtension
                         'ArchiveNote',
                         '
                         <div class=\'cms-sitetree-information\'>
-                        	<p class="meta-info" style="white-space: normal;">' . $phrase . '</p>
+                            <p class="meta-info" style="white-space: normal;">' . $phrase . '</p>
                         </div>'
                     ),
                 ]
