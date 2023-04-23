@@ -9,6 +9,11 @@ use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\Security\Member;
 
+/**
+ * Class \Sunnysideup\AvoidChildDeletion\Extensions\AvoidChildDeletion
+ *
+ * @property SiteTree|AvoidChildDeletion $owner
+ */
 class AvoidChildDeletion extends SiteTreeExtension
 {
     public function updateCMSActions(FieldList $fields)
