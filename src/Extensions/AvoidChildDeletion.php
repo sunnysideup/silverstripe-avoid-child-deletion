@@ -12,7 +12,7 @@ use SilverStripe\Security\Member;
 /**
  * Class \Sunnysideup\AvoidChildDeletion\Extensions\AvoidChildDeletion
  *
- * @property SiteTree|AvoidChildDeletion $owner
+ * @property \SilverStripe\CMS\Model\SiteTree|\Sunnysideup\AvoidChildDeletion\Extensions\AvoidChildDeletion $owner
  */
 class AvoidChildDeletion extends SiteTreeExtension
 {
