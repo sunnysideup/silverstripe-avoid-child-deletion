@@ -2,9 +2,9 @@
 
 namespace Sunnysideup\AvoidChildDeletion\Extensions;
 
+use SilverStripe\Core\Extension;
 use SilverStripe\CMS\Controllers\RootURLController;
 use SilverStripe\CMS\Model\SiteTree;
-use SilverStripe\CMS\Model\SiteTreeExtension;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\Security\Member;
@@ -14,12 +14,12 @@ use SilverStripe\Security\Member;
  *
  * @property SiteTree|AvoidChildDeletion $owner
  */
-class AvoidChildDeletion extends SiteTreeExtension
+class AvoidChildDeletion extends Extension
 {
     public function updateCMSActions(FieldList $fields)
     {
         if ($this->hasChildrenOrIsTooImportant()) {
-            $phrase = _t(__CLASS__ . '.ReasonsThisPageCanNotBeDeleted', 'This page can not be archived because it has children or it is the home page.');
+            $phrase = _t(self::class . '.ReasonsThisPageCanNotBeDeleted', 'This page can not be archived because it has children or it is the home page.');
             $fields->addFieldsToTab(
                 'ActionMenus.MoreOptions',
                 [
@@ -54,7 +54,7 @@ class AvoidChildDeletion extends SiteTreeExtension
     protected function hasChildrenOrIsTooImportant(): bool
     {
         $isHomePage = $this->getOwner()->URLSegment === RootURLController::get_homepage_link();
-        $haschildren = SiteTree::get()->filter('ParentID', $this->getOwner()->ID)->exists();
+        $haschildren = SiteTree::get()->filter(['ParentID' => $this->getOwner()->ID])->exists();
 
         return $isHomePage || $haschildren;
     }
